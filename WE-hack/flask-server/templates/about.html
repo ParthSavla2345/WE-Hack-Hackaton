@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body bgcolor="#e6ffee">
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="nav-brand">Food Waste Prevention</span>
+        </div>
+        <div class="nav-right">
+            <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            <a href="{{ url_for('register') }}" class="nav-button">Register</a>
+            <a href="{{ url_for('login') }}" class="nav-button">Login</a>
+        </div>
+    </nav>
+    <div class="content" align="center">
+        <h1>About Us</h1>
+        <p>{{ msg }}</p>
+    </div>
+</body>
+</html>

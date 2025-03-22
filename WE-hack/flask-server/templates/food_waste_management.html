@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Waste Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body bgcolor="#e6ffee">
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="nav-brand">Food Waste Prevention</span>
+        </div>
+        <div class="nav-right">
+            <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+        </div>
+    </nav>
+    <div class="content" align="center">
+        <h1>Food Waste Management</h1>
+        {% if msg %}
+            <p style="color: green;">{{ msg }}</p>
+        {% endif %}
+        
+        {% if role == 0 %}
+            <!-- Organizer View -->
+            <p>Help prevent food waste by donating surplus food from your events. Fill out the form below to notify NGOs.</p>
+            <form method="POST">
+                <div>
+                    <label>Food Names:</label>
+                    <input type="text" name="food_names" required placeholder="e.g., Rice, Chicken Curry">
+                </div>
+                <div>
+                    <label>Quantity:</label>
+                    <input type="text" name="quantity" required placeholder="e.g., 10 kg">
+                </div>
+                <button type="submit" class="nav-button">Submit Offer</button>
+            </form>
+        {% elif role == 1 %}
+            <!-- NGO View -->
+            <p>NGO dashboard coming soon! Here you will see available food offers to accept.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
