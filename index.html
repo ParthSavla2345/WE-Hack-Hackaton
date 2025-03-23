@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='EcoSortLogo.png') }}" rel="icon" type="image/png">
+    <title>EcoSort</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function startDetection() {
+            fetch('/run-detection')
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }       
+    </script>
+</head>
+
+<body>
+     <!-- page 1 -->
+     <div class="container1">
+        <div class="navbar">
+            <div class="nav-space">
+                <img src="{{ url_for('static', filename='EcoSortLogo.png') }}" height="50px" width="50px">
+                <span id="nav_grainlane">EcoSort</span>
+            </div>
+            <div class="nav-space">
+                <img class="nav-icon" src="{{ url_for('static', filename='contact.png') }}" height="40px"width="40px">   <!--search-->
+                
+                <img class="nav-icon" src="{{ url_for('static', filename='about_us.png') }}" height="40px" width="40px">    <!--cart-->
+                
+                <img class="nav-icon" src="{{ url_for('static', filename='login.png') }}"height="40px"width="40px">  <!--AboutUs-->
+            </div>
+        </div>
+        <div class="container1_body">
+            <div class="container1_body_ele1">
+                <h1 class="heading">EcoSort</h1>
+                <p class="slogan">"Sort it smart, do your part—<br>A cleaner world is where we start!" ♻️✨<p>
+            </div>
+
+            <div class="container1_body_ele2">
+                <button class="pg1button" onclick="startDetection()"> Waste Management System</button>
+                <button class="pg1button" onclick="startFoodManagement()">Food Management System</button>
+            </div>
+        </div>
+    </div>
+    <!-- page 2 -->
+     <div class="container2">
+        <div class="cont50">
+            <div class="aboutUsPg">
+                <p style="font-size:60px">About us ____</p>
+                <h2 class="pg2aboutUsText">"Swachhata ka hai yeh sandesh,<br>Har kachra mile sahi vishleshh!"</h2>
+            </div>
+
+            <div>
+                <p class="aboutUsContent">At EcoSort, we turn waste into opportunity with smart solutions. ♻️<br>
+                    Our AI-powered Smart Bin automates waste segregation, making recycling effortless.<br>
+                    With our Food Waste Management System, surplus food reaches the needy, not the landfill.<br><br>
+                    We connect donors, NGOs, and communities to reduce hunger and food waste.<br>
+                    Our vision: A cleaner planet, a responsible society, a sustainable future. 🌍<br>
+                    Join us—because waste is only waste if we waste it! 🚀</p>
+            </div>
+        </div>
+        
+        <div class="cont50_b">
+            
+            <div>
+                <h3>150 +</h3>
+                <p class="descriptionPG2">NGO are connected<br> with us</p>
+            </div>
+            <div>
+                <h3>250+</h3>
+                <p class="descriptionPG2">Event Managers are connected <br>with us</p>
+            </div>
+            <div>
+                <h3>89%</h3>
+                <p class="descriptionPG2">Waste have been <br>Managed efficiently </p>
+            </div>
+
+        </div>
+    </div>
+    <!-- page 3 -->
+    <div class="container3">
+        <div>
+            <video class="pg3img" src="{{ url_for('static', filename='bin-video.mp4') }}" controls></video>
+        </div>
+        <div class="pg3cont">
+            <h4 class="pg3title">One Bin, Big Impact!</h4>
+            <p class="aboutUsContent">
+                Smarter Bin uses AI-powered detection to identify waste through a webcam.<br>
+                It automatically categorizes the object into the right waste type.<br>
+                The corresponding bin opens instantly, ensuring proper disposal.<br><br>
+                This reduces waste contamination and boosts recycling efficiency.<br>
+                A step towards a cleaner, smarter, and greener future!<br>
+                Dispose right, because every choice matters! 🌱
+            </p>
+            <button class="pg3button">Learn More</button>
+        </div>        
+    </div>
+    <!-- page 4 -->
+    <div class="container4">
+
+        <div class="pg4header">
+            <div style="margin-left:50px;">
+                <h4 class="pg4title">Recycled Products ♻️</h4>
+                <p style="color:rgb(112, 111, 111);font-size:20px;">Our Newest Recycled Products</p>            
+            </div>    
+            <div class="viewAll">
+            </div>
+        </div>
+
+        <div class="productBody">
+                <div class="imghoverbutton">
+                    <p class="product-name">01</p>
+                    <img class="productImg" src="{{ url_for('static', filename='notbook-80pg-1.webp') }}">
+                    <p class="product-name">Hardbound Diary A5 150 pages</p>
+                    <p>😃 500</p>
+                    <div class="buttonAlign">
+                    <button class="AddtoCart">Reedem Now</button>
+                    <p class="productDescription">Recycled books are made by turning old paper into new pages, reducing waste and saving trees! 📖♻️</p>
+                    </div>
+                </div>
+
+                <div class="imghoverbutton">
+                    <p class="product-name">02</p>
+                    <img class="productImg" src="{{ url_for('static', filename='ECO-BOARD-PLANTER2.webp') }}">
+                    <p class="product-name">Eco-Board Planter</p>
+                    <p>😃 600</p>
+                    <div class="buttonAlign">
+                        <button class="AddtoCart">Reedem Now</button>
+                        <p class="productDescription">An Eco-Board Planter is made from recycled paper, compressed cardboard, and biodegradable resins. ♻️🌱</p>
+                    </div>
+                </div>
+
+                <div class="imghoverbutton">
+                    <p class="product-name">03</p>
+                    <img class="productImg" src="{{ url_for('static', filename='pencils_1.webp') }}">
+                    <p class="product-name">Pencils (PACK OF 10)</p>
+                    <p>😃 200</p>
+                    <div class="buttonAlign">
+                        <button class="AddtoCart">Reedem Now</button>
+                        <p class="productDescription">Recycled plastic pencils – made from repurposed plastic, durable, and eco-friendly! 🌱✏️♻️</p>
+                    </div>
+                </div>
+
+                <div class="imghoverbutton">
+                    <p class="product-name">04</p>
+                    <img class="productImg" src="{{ url_for('static', filename='Toilet_roll_1.webp') }}">
+                    <p class="product-name">Toilet Paper</p>
+                    <p>😃 550</p>
+                     <div class="buttonAlign">
+                        <button class="AddtoCart">Reedem Now</button>
+                        <p class="productDescription">Recycled garbage toilet paper – eco-friendly, sustainable, and waste-reducing! ♻️🚽</p>
+                    </div> 
+                </div>
+        </div>
+
+    </div>
+
+     <!--page 5  -->
+
+     <div class="container3">
+        <div class="pg3cont">
+            <h4 class="pg3title">Save Every Bite:<br> A Future Without Food Waste! </h4>
+            <p class="aboutUsContent">Event organizers, caterers, or individuals can donate surplus food effortlessly.<br>
+                Simply fill in the food details, and our 150+ NGO network gets notified.<br>
+                Nearby NGOs or needy individuals arrange pickup and distribution instantly.<br><br>
+                This ensures zero food waste and maximum impact on hunger relief.<br>
+                Join us in saving food, feeding lives, and making a difference!<br>
+                Donate today – because every meal counts! 💙♻️
+            </p>
+            <button class="pg3button">Learn More</button>
+        </div>
+        
+        <div>
+            <video class="pg3img" src="{{ url_for('static', filename='hungry-people.mp4') }}" controls></video>
+
+        </div>
+    </div>
+    <!-- page 6 -->
+    <div class="container6">
+        <div class="captionimg1"><p class="text-bg">Main bas ek kachra hoon. </p></div>
+        <div class="captionimg2">
+            <p class="capAlign">
+                "Kabhi tha bekaar, ab muskurahat ka sahara,<br>
+                Ek purana tyre, bacchon ka naya kinara.<br>
+                Jo tha kabad, ban gaya khilone ka raaz,<br>
+                Khushi mili jisme, wahi hai andaaz!" 😊♻️
+            </p>
+        </div>
+    </div>
+    <!-- page 7 -->
+    <footer class="footer-container_7pg">
+        <p class="pg7Grainlane">EcoSort</p>
+
+        <div class="contact-info">
+            <h2 class="contact-text">Contact Us ___</h2>
+            <ul class="contact-sort">
+                <li><a href="https://www.instagram.com/yourusername" target="_blank"><img  src="{{url_for('static',filename="email-logo.jpg")}}" height="60px" width="80px"></a></li>
+                <li><a href="https://www.linkedin.com/in/yourusername" target="_blank"><img src="{{url_for('static',filename="whatsapp-logo.png")}}" height="60px" width="60px"></a></li>
+                <li><a href="https://github.com/yourusername" target="_blank"><img  src="{{url_for('static',filename="github-logo.png")}}" height="60px" width="60px"></a></li>
+                <li><a href="https://wa.me/yourwhatsappnumber" target="_blank"><img src="{{url_for('static',filename="linkedin-logo.png")}}" height="80px" width="80px"></a></li>
+                <li><a href="mailto:youremail@example.com"><img  src="{{url_for('static',filename="insta-logo.png")}}" height="60px" width="100px"></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
