@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Waste Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Reset and Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+            background-color: #d5d2cb;
+            font-family: "MyCustomFont", sans-serif;
+        }
+
+        @font-face {
+            font-family: "MyCustomFont";
+            src: url("{{ url_for('static', filename='FSAlbert Regular.otf') }}") format("opentype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "MyCustomFont2";
+            src: url("{{ url_for('static', filename='MazzardH-SemiBold.ttf') }}") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        h1, h2, p {
+            margin: 0;
+        }
+
+        /* Container and Navbar */
+        .container1 {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .navbar {
+            height: 8vh;
+            width: 98vw;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1vw;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        #nav_grainlane {
+            margin-left: 10px;
+            font-size: 40px;
+            font-family: "MyCustomFont2";
+            color: #666;
+        }
+
+        .nav-space {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link, .nav-button {
+            margin-right: 40px;
+            text-decoration: none;
+            color: #666;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .nav-button {
+            border: 1px solid #666;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+
+        .nav-link:hover, .nav-button:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+            color: #666;
+            background-color: #f0ede7;
+        }
+
+        /* Main Content */
+        .container1_body {
+            height: 80vh;
+            width: 96vw;
+            background-image: url("{{ url_for('static', filename='cleaning-4230960_1280.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 30px;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .form-container {
+            width: 30vw; /* Slightly narrower */
+            background-color: #fff;
+            border: 2px solid #8B7E66; /* Thinner, matching olive-brown */
+            border-radius: 15px;
+            padding: 20px; /* Reduced padding */
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            text-align: center;
+            margin: 20px auto;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+
+        .slogan {
+            font-size: 20px;
+            color: black;
+        }
+
+        .heading {
+            font-size: 80px;
+            font-family: "MyCustomFont2";
+            color: black;
+        }
+
+        .msg {
+            color: green;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Organizer Form */
+        .organizer-form {
+            margin-top: 15px; /* Reduced from 20px */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* Tighter spacing between form elements */
+        }
+
+        .organizer-form div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Left-align labels with inputs */
+            width: 100%; /* Full width for consistency */
+        }
+
+        .organizer-form label {
+            color: #333333;
+            font-size: 16px; /* Slightly smaller for hierarchy */
+            margin-bottom: 5px; /* Tight spacing below label */
+        }
+
+        .organizer-form input {
+            width: 100%; /* Full width of container */
+            padding: 8px; /* Slightly smaller padding */
+            border: 1px solid #8B7E66; /* Match button border */
+            border-radius: 8px; /* Slightly smaller radius */
+            font-size: 16px;
+            background-color: #f0ede7; /* Light beige, matching table */
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s ease;
+        }
+
+        .organizer-form input:focus {
+            border-color: #736752; /* Darker olive-brown on focus */
+            outline: none;
+        }
+
+        .organizer-form button {
+            height: 5vh; /* Slightly shorter */
+            width: 12vw; /* Slightly narrower */
+            border: 1px solid #8B7E66;
+            border-radius: 20px;
+            background-color: #8B7E66; /* Filled button */
+            font-size: 18px; /* Slightly smaller */
+            color: white; /* White text */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .organizer-form button:hover {
+            background-color: #736752; /* Darker olive-brown */
+            transform: scale(1.05); /* Slight scale-up */
+        }
+
+        /* NGO Table */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #e8e5de;
+        }
+
+        th, td {
+            border: 1px solid #d5d2cb;
+            padding: 8px;
+            text-align: left;
+            color: #333333;
+        }
+
+        th {
+            background-color: #b0a99f;
+            font-family: "MyCustomFont2";
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0ede7;
+        }
+
+        .accept-btn {
+            background-color: #8B7E66;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .accept-btn:hover {
+            background-color: #736752;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <nav class="navbar">
+            <div class="nav-left">
+                <span id="nav_grainlane">Food Waste Prevention</span>
+            </div>
+            <div class="nav-space">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="{{ url_for('logout') }}" class="nav-button">Logout</a>
+            </div>
+        </nav>
+        <div class="container1_body">
+            <h1 class="heading">Food Waste Management</h1><br><br>
+            {% if msg %}
+                <p class="msg">{{ msg }}</p>
+            {% endif %}
+            
+            {% if role == 0 %}
+                <!-- Organizer View -->
+                <div class="form-container">
+                    <p class="slogan">Help prevent food waste by donating surplus food from your events.</p>
+                    <form method="POST" action="{{ url_for('food_waste_management') }}" class="organizer-form">
+                        <div>
+                            <label>Food Names:</label>
+                            <input type="text" name="food_names" required placeholder="e.g., Rice, Curry">
+                        </div>
+                        <br>
+                        <div>
+                            <label>Quantity:</label>
+                            <input type="text" name="quantity" required placeholder="e.g., 10 kg">
+                        </div><br>
+                        <button type="submit">Submit Offer</button>
+                    </form>
+                </div>
+            {% elif role == 1 %}
+                <!-- NGO Dashboard -->
+                <p class="slogan">Available food offers from organizers. Click <b>"Accept"</b> to claim.</p>
+                {% if offers %}
+                    <table>
+                        <tr>
+                            <th>Offer ID</th>
+                            <th>Food Names</th>
+                            <th>Quantity</th>
+                            <th>Organizer</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for offer in offers %}
+                            <tr>
+                                <td>{{ offer.id }}</td>
+                                <td>{{ offer.food_names }}</td>
+                                <td>{{ offer.quantity }}</td>
+                                <td>{{ offer.username }}</td>
+                                <td>
+                                    <form method="POST" action="{{ url_for('accept_offer', offer_id=offer.id) }}">
+                                        <button type="submit" class="accept-btn">Accept</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p class="slogan">No available food offers at this time.</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <nav style="background-color: #f0f0f0; padding: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Navigation</span>
+            <div>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    
+    <h1>Welcome to Dashboard, {{ user_name }}!</h1>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="text/javascript">
+        // Check URL parameter for success
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        
+        if (success === 'true') {
+            Toastify({
+                text: "You have successfully registered!",
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "green",
+                stopOnFocus: true
+            }).showToast();
+            
+            // Clean up URL after showing toast
+            window.history.replaceState({}, document.title, "{{ url_for('dashboard') }}");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .nav-button {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body bgcolor="#e6ffee">
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="nav-brand">Food Waste Prevention</span>
+        </div>
+        <div class="nav-right">
+            <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('about') }}" class="nav-link">About</a>
+            {% if not session.loggedin %}
+                <a href="{{ url_for('register') }}" class="nav-button">Register</a>
+                <a href="{{ url_for('login') }}" class="nav-button">Login</a>
+            {% else %}
+                <div class="dropdown">
+                    <a href="#" class="nav-button">{{session.username}}</a>
+                    <div class="dropdown-content">
+                        <a href="#">{{ session.username }}</a>
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="content" align="center">
+        <h2>{{ msg }}</h2>
+        <br><br>
+        <a href="{{ url_for('food_waste_management') }}" class="nav-button">Food Waste Management</a>
+    </div>
+</body>
+</html>
